@@ -109,6 +109,18 @@ function getArticlesByCategory($id){
     return $articlesByCategory;
 }
 
+function getArticlesByAuthor($id){
+    $con = db_connect();
+    $query = 'SELECT articles.id, title, image ,content FROM articles
+    WHERE articles.author_id =' . $id;
+    $stmt = $con->prepare($query);
+    $stmt->execute(); 
+    $articlesByCategory = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $articlesByCategory;
+}
+
+
+
 
 
 
