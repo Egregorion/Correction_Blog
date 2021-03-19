@@ -1,0 +1,20 @@
+.badge a {
+    color:white;
+}
+
+.badge a:hover{
+    text-decoration: none;
+    color:white;
+}
+
+.up {
+    padding: 0 2em ;
+    position:relative;
+    margin-top: -25%;
+    background-color:rgba(255,255,255,0.8);
+}
+
+.banner {
+    height: 100vh;
+}
+

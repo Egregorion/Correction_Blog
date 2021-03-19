@@ -6,7 +6,7 @@ if(isset($_POST) && !empty($_POST)){
     $post = $_POST;
     $email = $post['email'];
     $password = $post['password'];
-    $user = getUserInfos($email);
+    $user = getUserInfosByMail($email);
     if(password_verify($password, $user['password'])){
         session_start();
         $_SESSION['user'] = [

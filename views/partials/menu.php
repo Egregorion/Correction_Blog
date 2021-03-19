@@ -11,8 +11,11 @@
           Categories
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
+        <?php 
+        $categoriesList = getAllCategories(); 
+        foreach($categoriesList as $category){ ?>
+            <a class="dropdown-item" href="category.php?id=<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a>
+        <?php } ?>
         </div>
       </li>
     </ul>
