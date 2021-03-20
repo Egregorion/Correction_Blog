@@ -1,6 +1,7 @@
 <?php include 'partials/header.php'; ?>
 
 <div class="container">
+
     <form action="" method="post" enctype="multipart/form-data">
         <div>
             <label for="titre">Titre de l'article</label>
@@ -16,7 +17,7 @@
         </div>
         <?php foreach($categoriesList as $category){?>
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck<?php echo $category['id']; ?>" name="cat_<?php echo $category['name']; ?>">
+            <input type="checkbox" class="form-check-input" id="exampleCheck<?php echo $category['id']; ?>" value="<?php echo $category['id']; ?>" name="cat_<?php echo $category['name']; ?>">
             <label class="form-check-label" for="exampleCheck<?php echo $category['id'] ?>"><?php echo $category['name']; ?></label>
         </div>
         <?php } ?>

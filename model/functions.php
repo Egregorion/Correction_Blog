@@ -116,6 +116,44 @@ function getArticlesByAuthor($id){
     return $articlesByCategory;
 }
 
+function addArticle($title, $user_id, $destination, $content){
+    $con = db_connect();
+    $query = 'INSERT INTO articles (id, title, author_id, image, content)
+    VALUES (null, :title, :author, :image, :content)';
+    $stmt = $con->prepare($query);
+    //$stmt->bindValue(':title', $title);
+    //$stmt->bindValue(':author', $user_id);
+    //$stmt->bindValue(':image', $destination);
+    //$stmt->bindValue(':content', $content);
+    $stmt->execute([
+        ':title' => $title,
+        ':author' => $user_id,
+        ':image' => $destination,
+        ':content'=> $content
+    ]);
+}
+
+function getLastArticleId($title, $user_id) {
+    $con = db_connect();
+    $query = 'SELECT id FROM articles
+    WHERE title = :title AND author_id = :author';
+    $stmt = $con->prepare($query);
+    $stmt->bindValue(':title', $title);
+    $stmt->bindValue(':author', $user_id);
+    $stmt->execute();
+    $lastArticleId = $stmt->fetch(PDO::FETCH_ASSOC);
+    return ($lastArticleId['id']);
+}
+
+function setArticleCategory($last, $value){
+    $con = db_connect();
+    $query = 'INSERT INTO article_category (id, article_id, category_id)
+    VALUES (null, :article, :cat)';
+    $stmt = $con->prepare($query);
+    $stmt->bindValue(':article', $last);
+    $stmt->bindValue(':cat', $value);
+    $stmt->execute();
+}
 
 
 

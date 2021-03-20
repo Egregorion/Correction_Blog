@@ -18,6 +18,13 @@
         <?php } ?>
         </div>
       </li>
+      <?php if(isset($_SESSION['user'])&& !empty($_SESSION['user'])){ ?>
+        <li class="nav-item">
+          <a class="nav-link" href="new_article.php?id=<?php echo $_SESSION['user']['id'] ;?>"> 
+            New Article
+          </a>
+        </li>
+      <?php } ?>
     </ul>
   </div>
   <div class="items-align-right">
