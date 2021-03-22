@@ -6,15 +6,20 @@ $(document).ready(function() {
         let comment = $('#comment').val();
         
         $.post(
-            'single.php?id='+id,
+            'comments.php',
             {
                 id: id,
                 pseudo: pseudo,
                 comment: comment
             },
             function(data){
-                console.log(data);
+                let badgeValue = parseInt($('#badge').html());
+                newBadgeValue = badgeValue += 1;
+                $('#badge').html(newBadgeValue);
+                $('#comments').html(data);
             }
         )
+        $('#pseudo').val('');
+        $('#comment').val('');
     })
 })
