@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 20 mars 2021 à 21:01
+-- Généré le : lun. 22 mars 2021 à 08:18
 -- Version du serveur :  10.3.25-MariaDB-0ubuntu0.20.04.1
 -- Version de PHP : 7.4.3
 
@@ -115,11 +115,18 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 CREATE TABLE `commentaires` (
   `id` int(11) NOT NULL,
   `pseudo` varchar(255) NOT NULL,
-  `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp(),
   `article_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `commentaires`
+--
+
+INSERT INTO `commentaires` (`id`, `pseudo`, `content`, `date`, `article_id`) VALUES
+(3, 'FB', 'Honnêtement le personnage principal m\'ennui', '2021-03-22 07:59:18', 5),
+(4, 'Dr Who', 'Une histoire de scientifique qui voyage dans le temps... ça n\'a aucun sens ! ', '2021-03-22 07:59:18', 5);
 
 -- --------------------------------------------------------
 
@@ -210,7 +217,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT pour la table `commentaires`
 --
 ALTER TABLE `commentaires`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `users`

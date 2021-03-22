@@ -150,11 +150,21 @@ function setArticleCategory($last, $value){
     $query = 'INSERT INTO article_category (id, article_id, category_id)
     VALUES (null, :article, :cat)';
     $stmt = $con->prepare($query);
-    $stmt->bindValue(':article', $last);
-    $stmt->bindValue(':cat', $value);
+    $stmt->bindValue(':article', $last, PDO::PARAM_INT);
+    $stmt->bindValue(':cat', $value, PDO::PARAM_INT);
     $stmt->execute();
 }
 
+function getArticleComments($id) {
+    $con = db_connect();
+    $query = 'SELECT * FROM commentaires
+    WHERE commentaires.article_id = :id';
+    $stmt = $con->prepare($query);
+    $stmt->bindValue(':id', $id);
+    $stmt->execute();
+    $comments = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+    return $comments;
+}
 
 
 
