@@ -14,7 +14,7 @@
                 <?php echo $article['content']; ?>
             </div>
         </div>
-        <div id="comments_list" class="list-group">
+        <div id="comments_list" class="list-group mt-3">
             <div >
                 <span class="titre_commentaires">Commentaires</span>
                 <span id="badge" class="badge badge-primary badge-pill"><?php echo count($comments) ?></span>

@@ -166,6 +166,16 @@ function getArticleComments($id) {
     return $comments;
 }
 
+function addComment($id, $pseudo, $comment){
+    $con = db_connect();
+    $query = 'INSERT INTO commentaires (id, pseudo, content, article_id)
+    VALUES(null, :pseudo, :content, :article_id)';
+    $stmt = $con->prepare($query);
+    $stmt->bindValue(':article_id', $id, PDO::PARAM_INT);
+    $stmt->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+    $stmt->bindValue(':content', $comment, PDO::PARAM_STR);
+    $stmt->execute();
+}
 
 
 
